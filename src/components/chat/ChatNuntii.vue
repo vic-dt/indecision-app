@@ -15,6 +15,8 @@
     </div> -->
 
             <ChatBullula :meus-est="true" nuntius="¿Salimos a dar una vuelta?"/>
+
+            <ChatBullula :meus-est="false" nuntius="No" imago="https://yesno.wtf/assets/yes/11-a23cbde4ae018bbda812d2d8b2b8fc6c.gif"/>
 </div>
 </div>
 </template>
