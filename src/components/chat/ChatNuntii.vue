@@ -14,15 +14,32 @@
         </div>
     </div> -->
 
-            <ChatBullula :meus-est="true" nuntius="¿Salimos a dar una vuelta?"/>
+            <!-- <ChatBullula :meus-est="true" nuntius="¿Salimos a dar una vuelta?"/> -->
 
-            <ChatBullula :meus-est="false" nuntius="No" imago="https://yesno.wtf/assets/yes/11-a23cbde4ae018bbda812d2d8b2b8fc6c.gif"/>
+            <!-- <ChatBullula 
+            v-for="nuntius in nuntii"
+            :key="nuntius.id"
+            :meus-est="nuntius.meusEst" 
+            :nuntius="nuntius.nuntius" 
+            :imago="nuntius.imago"/> -->
+
+            <ChatBullula 
+            v-for="nuntius in nuntii"
+            :key="nuntius.id"
+            v-bind="nuntius"/>
+            
 </div>
 </div>
 </template>
 
 <script lang="ts" setup>
+import type { chatNuntius } from '@/chat-nuntius.interface';
 import ChatBullula from './ChatBullula.vue';
 
+type NewType = chatNuntius;
 
+interface Props {
+    nuntii: NewType[];
+}
+defineProps<Props>();
 </script>
