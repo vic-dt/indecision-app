@@ -5,10 +5,10 @@
        <span>Mi esposa</span> 
     </div>
 
-    <ChatNuntii/>
+    <ChatNuntii :nuntii="nuntii"/>
 
 
-    <TextusArca/>
+    <TextusArca @mitte-nuntius="($event)=>cumNovumNuntius($event)"/>
    
 
 
@@ -19,8 +19,43 @@
 </template>
 
 <script lang="ts" setup>
+
 import ChatNuntii from '@/components/chat/ChatNuntii.vue';
 import TextusArca from '@/components/chat/TextusArca.vue';
 
 
+import { useChat } from '@/composables/useChat';
+
+const{nuntii, cumNovumNuntius} = useChat();
+
+
+
+
+
+// const nuntii = ref<chatNuntius[]>([
+//     {
+//         id: new Date().getTime(),
+//         nuntius: '¿Quiéres ir a tomar café?',
+//         meusEst: true,
+
+//     },
+//     {
+//         id: new Date().getTime() + 1 ,
+//         nuntius: 'Si!!',
+//         meusEst: false,
+//         imago:'https://yesno.wtf/assets/yes/11-a23cbde4ae018bbda812d2d8b2b8fc6c.gif'
+
+//     }
+
+// ]);
+
+// const cumNovumNuntius = (textus: string) => {
+
+//     nuntii.value.push({
+//         id:new Date().getTime(),
+//         nuntius: textus,
+//         meusEst: true,
+
+//     })
+// }
 </script>
