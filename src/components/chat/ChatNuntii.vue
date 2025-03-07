@@ -1,5 +1,5 @@
 <template>
-  <div class="p-4 flex-1 overflow-y-auto">
+  <div ref="chatRef" class="p-4 flex-1 overflow-y-auto">
     <div class="flex flex-col space-y-2">
       <!-- <div class="flex justify-end">
         <div class="bg-blue-200 text-black p-2 max-w-xs rounded-lg">
@@ -30,11 +30,22 @@
 <script lang="ts" setup>
 import type { chatNuntius } from '@/interfaces/chat-nuntius.interface';
 import ChatBullula from './ChatBullula.vue';
-
-type NewType = chatNuntius;
+import { ref, watch } from 'vue';
 
 interface Props {
-  nuntii: NewType[];
+  nuntii: chatNuntius[];
 }
-defineProps<Props>();
+const props = defineProps<Props>();
+
+const chatRef = ref<HTMLDivElement | null>(null);
+
+watch(props.nuntii, () => {
+  console.log('nuntii cambio');
+  setTimeout(() => {
+    chatRef.value?.scrollTo({
+      top: chatRef.value.scrollHeight,
+      behavior: 'smooth',
+    })
+  });
+});
 </script>
